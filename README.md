@@ -5,15 +5,15 @@ Prerequisites
 -------------
 
 - Fork this repository as a starting point
-- Create a virtual machine using Vagrant (<http://www.vagrantup.com/>) with relevant php packages and dependencies
-- Include Vagrant configuration files, so we can test your code
+- Use docker container to run your project in
+- Include Dockerfile configuration files, so we can test your code
 
 Task
 ----
 
 You will be creating a small API microservice : "URL to PDF service".
 
-Create Symfony Components based stack project, using composer.
+Create Go Lang project.
 
 
 The end result should be allowing your application to accept URL via HTTP call and return PDF 
