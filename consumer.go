@@ -13,6 +13,7 @@ type Url2PdfJob struct{
 	Name string //the slugged url used to create a subfolder for where to store the pdf
 	Url string //the url to generate pdf from
 	Pdf string //the basename of the pdf file to generate
+	TPdf string
 }
 
 type Url2PdfConsumer struct {
@@ -46,8 +47,17 @@ func (c Url2PdfConsumer) Process(msg *queue.Message) bool {
 	if _, err := os.Stat(job.Pdf); err != nil {
 		//invoke html to pdf binary
 		fmt.Println("Executing:", c.program, job.Url, job.Pdf)
-		cmd := exec.Command(c.program, job.Url, job.Pdf)
+
+		//enforce an atomic write by writing pdf to temp file
+		//and renaming it immediately afterwards
+		cmd := exec.Command(c.program, job.Url, job.TPdf)
 		err := cmd.Run()
+		if err != nil{
+			return false
+		}
+		//rename temp file
+		cmd = exec.Command("mv", job.TPdf, job.Pdf)
+		err = cmd.Run()
 		if err != nil{
 			return false
 		}
