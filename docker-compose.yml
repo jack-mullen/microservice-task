@@ -1,0 +1,30 @@
+version: '2'
+services:
+  rabbitmq:
+    container_name: 'url2pdf_rabbitmq'
+    image: 'bitnami/rabbitmq:latest'
+    ports:
+      - '4369:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    volumes:
+      - 'rabbitmq_data:/bitnami/rabbitmq'
+    environment:
+      - RABBITMQ_USERNAME=admin
+      - RABBITMQ_PASSWORD=admin
+  url2pdf:
+    container_name: 'url2pdf_app'
+    image: 'golang:1.6.4-wheezy'
+    ports:
+      - '8011:80'
+    depends_on:
+      - rabbitmq
+    env_file: .env
+    volumes:
+          - .:/go/src/microservice-task
+    working_dir: /go/src/microservice-task
+    entrypoint: ./docker_entrypoint.sh
+volumes:
+  rabbitmq_data:
+    driver: local
