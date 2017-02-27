@@ -18,3 +18,11 @@ go install
 #make html2pdf program global
 cp bin/wkhtmltopdf /usr/bin/wkhtmltopdf
 chmod +x /usr/bin/wkhtmltopdf
+
+#run a single consumer
+microservice-task consume &> /var/log/url2pdf.log &
+
+#run the micro service in the background
+microservice-task server &> /var/log/url2pdf.log &
+
+tail -f  /var/log/url2pdf.log
