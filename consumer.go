@@ -10,9 +10,9 @@ import (
 )
 
 type Url2PdfJob struct{
-	Name string
-	Url string
-	Pdf string
+	Name string //the slugged url used to create a subfolder for where to store the pdf
+	Url string //the url to generate pdf from
+	Pdf string //the basename of the pdf file to generate
 }
 
 type Url2PdfConsumer struct {
