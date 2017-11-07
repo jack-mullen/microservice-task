@@ -1,0 +1,5 @@
+package: microservice-task
+import:
+  - package: github.com/streadway/amqp
+  - package: github.com/gosimple/slug
+  - package: github.com/rainycape/unidecode
