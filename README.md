@@ -1,32 +1,27 @@
-Sipsynergy  Task
+Sipsynergy Interview Task
 ==================
 
 Prerequisites
 -------------
 
-- Fork this repository as a starting point
-- Use docker container to run your project in
-- Include Dockerfile configuration files, so we can test your code
+- Fork this repository as a starting point.
+- Use a docker container to run your project in.
+- Include the Dockerfile configuration files, so we can test your code.
 
 Task
 ----
 
-You will be creating a small API microservice : "URL to PDF service".
+You will be creating a small Users microservice with a UI.
 
-Create Go Lang project.
+The endpoints that are required are entirely up to you. However here is a quick example list;
+- [GET] /users 
+- [GET] /users/{id}
+- [POST] /users
+- [POST] /users/{id}
 
+The UI should interact with the API you have built.
 
-The end result should be allowing your application to accept URL via HTTP call and return PDF 
-(return 'application/pdf' content type and PDF containing requested url contents)
-
-e.g.:
- 
-`GET http://localhost:8000/api/to-pdf?url=http://www.google.com`
-
-
-The main focus of this task is to demonstrate architectural decisions you undertake.
-
-You may complete the task in any way you see fit (it does not have to be finished). 
+You may complete the task in any way you see fit (**it does not have to be finished**). 
 
 Conclusion
 ----------
