@@ -3,7 +3,7 @@ services:
   api:
     container_name: api
     restart: always
-    build: .
+    build: ./api
     ports:
       - "3000:3000"
     links:
@@ -15,3 +15,11 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
+  web:
+      container_name: web
+      restart: always
+      build: ./web
+      ports:
+        - "8080:80"
+      links:
+        - api
